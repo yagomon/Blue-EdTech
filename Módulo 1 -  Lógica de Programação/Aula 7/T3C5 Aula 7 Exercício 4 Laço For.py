@@ -3,8 +3,12 @@
 print()
 
 par = 0
+soma=0
 
 for i in range(6):
     n=int(input('Digite um número: '))
     if n%2 == 0:
         par +=1
+        soma+=n
+
+print(f'Foram digitados {par} números pares. A soma de todos os pares é {soma}. ')
