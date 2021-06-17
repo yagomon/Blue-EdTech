@@ -1,6 +1,6 @@
 # 6 - Escreva um programa onde o usuário digita uma frase e essa frase retorna sem nenhuma vogal.
 
-f= "Oi, meu nome é yago."
+f= input("Digite uma frase: ")
 
 for i in f:
     if i in "aeiouáàâéêíóôAEIOUÁÀÂÉÊÍÓÔ":
