@@ -11,11 +11,11 @@ from random import randint
 
 jogos= int(input('\nQuantos jogos você deseja realizar? '))
 cont=0
-l= list()
 lnova= list()
 
-while cont != jogos:
-    cont+=1
+while cont != jogos:  # Poderia usar 'for i in range (jogos):' e retirar o contador
+    cont+=1           # economizaria 1 linha de código
+    l= list()
     while len(l) != 6:
         n=randint(0,60)
         if n not in l:
@@ -29,10 +29,10 @@ if len(lnova) >1:
 else:
     jogos='jogo'
 
-print (f'\nAqui estão os números para {len(lnova)} {jogos}:\n\n{lnova}')
+# print (f'\nAqui estão os números para {len(lnova)} {jogos}:\n\n{lnova}')  # imprime tudo junto [[],[],[]]
 
-
-
+for i in range(len(lnova)):           # jogando no for vc imprime individualmente em cada linha
+    print(f'\n{i+1}º jogo: {lnova[i]}')
 
 
 
