@@ -91,7 +91,7 @@ while True:
     elif player < machine:
         print('Eu sou o grande campeão!')
     else:
-        print('Empate!!!\nNão houve vencedores em nossa disputa.')
+        print('Empate!!!\nNão houve vencedor em nossa disputa.')
 
     print()
     print(('=-')*20)
