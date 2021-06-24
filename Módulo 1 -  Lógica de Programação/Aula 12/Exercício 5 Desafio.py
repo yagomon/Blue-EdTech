@@ -33,9 +33,9 @@ while True:
         proceed=input('Entrada inválida!\n\nDigite S para sim ou N para não: ').upper()
     if proceed == 'N':
         break
-
+    
+somaIdade=0
 for i in lista:
-    somaIdade=0
     somaIdade += i['idade']
     
 for i in lista:
