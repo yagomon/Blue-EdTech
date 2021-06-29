@@ -22,6 +22,7 @@ from datetime import date
 def autoriza_voto(ano):
     data = date.today()
     anoAtual = data.year
+    
     if 18 > anoAtual-ano >= 16:
         return "Voto Opicional"
     elif anoAtual-ano >= 60:
@@ -157,7 +158,7 @@ print(('=-=')*14)
 
 # Não consegui manter o print dentro da função 2 pois imprimiria todos os resultados em tela ao fim de cada votação e  a intenção era imprimir os resultados somente no final. Por isso, optei por tirar os prints da função e deixa-los fora do while.
 
-# Poderia deixar o programa mais simples utilizando contadores ao invés de listas e dicionários, mas quiz tentar utilizar todo o conteúdo apendido até aqui. 
+# Poderia deixar o programa mais simples utilizando contadores ao invés de listas e dicionários, mas quiz tentar utilizar todo o conteúdo aprendido até aqui. 
 
 # Acredito que o correto seria informar que o usuário não pode votar assim que ele inserisse o ano de nascimento. Mas, na questão pede para faze-lo após a inserção do voto, então, tentei fazer conforme pede na questão.
   
