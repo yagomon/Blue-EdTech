@@ -1,5 +1,6 @@
 from random import choice
 from time import sleep
+from random import randint
 
 class Personagem:
     def __init__(self):
@@ -14,19 +15,24 @@ class Personagem:
 class Heroi(Personagem):
     def __init__(self):
         super().__init__()
-        self.energia= 10
+        self.vitalidade= 3
 
     def atacar(self,treino=0):
         self.força_adicional = treino
 
-    def treinar(self, treino):
-        self.treino= treino          
+    def treinar(self):
         dic_treino = {5:'Seus exercícios matutinos foram muito bons e você ganhou +5 de força.',7:
         'Enquanto praticava seus exercícios choveu e você conseguiu ficar muito forte!\nSua força aumentou em +7 pontos.',3:'O de hoje ta pago! hahaha\nVocê ganhou + 3 de força.',2:'Houve um tempo de seca e suas raízes não tiveram de onde puxar nutrientes.\nVocê ganhou +2 de força', 4:'Você começou a treinar mais cedo e conseguiu dobrar seus exercicios!\nVocê ganha +4 de força.'}
-        if self.treino == 'sim':
-            ganho_forca = choice(list(dic_treino.keys()))
-            self.forca += ganho_forca
-            print(dic_treino[ganho_forca])  
+        ganho_forca = choice(list(dic_treino.keys()))
+        self.forca += ganho_forca
+        print(dic_treino[ganho_forca]) 
+
+class Vilao(Personagem):
+    def __init__(self):
+        super().__init__()
+        forca= randint(1,5)
+
+
 
 # Abretura do jogo
 print('=-'*47)
@@ -62,11 +68,11 @@ while escolha not in ['1','2']:
 
 if escolha == 2:
     print('\nOs arruceiros estão plantados a mais tempo que você e se beneficiaram do uso de componentes tóxicos. Tem certeza que deseja ataca-los agora?')
-    print('1- Sim. Eu sou uma Super Batata, irei atacar agora mesmo.')
+    print('1- Sim. Eu sou uma Super Batata, irei ataca-los agora mesmo.')
     print('2-Não, acho melhor treinar um pouquinho antes.')
     confirma= input('')
     if confirma == 2:
-        pass
+        batata.treinar()
 else:
     pass
 
