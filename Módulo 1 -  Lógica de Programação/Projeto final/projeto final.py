@@ -5,20 +5,16 @@ from abertura import abertura
 
 
 class Personagem:
-    def __init__(self):
+    def __init__(self,clima):
         forca=10   #força padrão de qualquer personagem
         self.forca= forca
-
-    def escolher_clima(self):
-        self.clima = ['chovendo','calor']  # clima que atua sobre qualquer personagem
-        clima = choice(self.clima)
-        self.clima = clima
-        return self.clima
+        self.clima=''
        
 class Heroi(Personagem):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,clima):
+        super().__init__(clima)
         self.vitalidade= 3 # vida do Herói
+        self.clima= clima
 
     def atacar(self,treino=0):
         self.força_adicional = treino
@@ -39,10 +35,11 @@ class Heroi(Personagem):
             
 
 class Vilao(Personagem):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,clima):
+        super().__init__(clima)
         ganho_forca= randint(1,5)
         self.forca += ganho_forca
+        self.clima= clima
          
 
     def escolher_vilão(self):
@@ -54,25 +51,27 @@ class Vilao(Personagem):
             escolha_vilao = choice(lista_viloes) # Se o vilão escolhido já estiver na lista_jaForam escolhe novamente.
 
         lista_jaForam.append(escolha_vilao) # adiciona o vilão escolhido na lista dos vilões que já foram
-        
-        self.escolher_clima()
-        if self.clima == 'calor': #influencia do clima na força do vilão escolhido
+                
+        if self.clima == 'ensolarado': #influencia do clima na força do vilão escolhido
             self.força += 3
-            print(f'\nHouve uma temporada de seca na horta dos arruaceiros, {escolha_vilao} desviaram a irrigação para eles e ganharam +3 de força.')     
+            print(f'\nHouve uma temporada de seca na horta dos arruaceiros, {escolha_vilao} desviaram a irrigação para si ganharam +3 de força.')     
         return escolha_vilao        
  
 # Abertura do jogo
 #abertura()
 
 # Começo do jogo
-batata= Heroi()
-vilao= Vilao()
+lista_clima = ['chovendo','ensolarado']
+clima= choice(lista_clima)
 
-climaHeroi = batata.escolher_clima()
+batata= Heroi(clima)
+vilao= Vilao(clima)
+
+
 
 print()
 
-if climaHeroi == 'chovendo': # Começo para dias de chuva
+if batata.clima == 'chovendo': # Começo para dias de chuva
     sleep(1)
     print(f'Bom dia, Super Batata!')
     sleep(1.3)
@@ -133,17 +132,29 @@ if escolha == '2':
 # Escolhendo inimigo aleatório
 if escolha== '1':
     inimigos = vilao.escolher_vilão()
-    print(f'Os arruaceiros da vez são {inimigos.capitalize()}.\nSó você, Super Batata, pode derrotar os inimigos e acabar com as raízes do mal! ')
+    print(f'\nOs arruaceiros da vez são {inimigos.capitalize()}!!!')
+    sleep(1)
+    print('Só a Super Batata pode derrotar os inimigos e acabar com as raízes do mal! ')
     
     # Batalhando
     if batata.forca < vilao.forca:
-        print(f'{inimigos.capitalize()}') 
-
-
-
-
-
-
+        print(f'Força atual: [10]pts')
+        if batata.vitalidade== 3:
+            print(f'Vida atual:███')
+        elif batata.vitalidade== 2:
+            print(f'Vida atual:██')     
+        elif batata.vitalidade==1:
+            print(f'Vida atual:█')
+        print(f'\n\n{inimigos.capitalize()}: {vilao.forca} pts de força')
+    if batata.forca > vilao.forca:
+        print(f'Força atual: [10]pts')
+        if batata.vitalidade== 3:
+            print(f'Vida atual:███')
+        elif batata.vitalidade== 2:
+            print(f'Vida atual:██')     
+        elif batata.vitalidade==1:
+            print(f'Vida atual:█')
+        print(f'\n\n{inimigos.capitalize()}: {vilao.forca} pts de força')
 
 
         
