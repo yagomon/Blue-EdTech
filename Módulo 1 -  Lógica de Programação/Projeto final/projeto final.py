@@ -1,6 +1,7 @@
 from random import choice
 from time import sleep
 from random import randint
+from abertura import abertura
 
 
 class Personagem:
@@ -47,10 +48,10 @@ class Vilao(Personagem):
     def escolher_vilão(self):
         lista_viloes= ['cenouras','beterrabas','alfaces','tomates','abobrinhas','pepinos','cebolinhas','mandiocas','rabanetes','brócolis']
         lista_jaForam = list()
-        escolha_vilao = choice[lista_viloes] #Escolhe um vilão da lista_viloes
+        escolha_vilao = choice(lista_viloes) #Escolhe um vilão da lista_viloes
 
         while escolha_vilao in lista_jaForam:
-            escolha_vilao = choice[lista_viloes] # Se o vilão escolhido já estiver na lista_jaForam escolhe novamente.
+            escolha_vilao = choice(lista_viloes) # Se o vilão escolhido já estiver na lista_jaForam escolhe novamente.
 
         lista_jaForam.append(escolha_vilao) # adiciona o vilão escolhido na lista dos vilões que já foram
         
@@ -61,7 +62,7 @@ class Vilao(Personagem):
         return escolha_vilao        
  
 # Abertura do jogo
-
+#abertura()
 
 # Começo do jogo
 batata= Heroi()
@@ -122,7 +123,7 @@ else: # Começo para dias de sol
 # Testando as escolhas 
 if escolha == '2':
     print('\nOs arruceiros estão plantados a mais tempo que você e se beneficiaram do uso de componentes tóxicos.\nTem certeza que deseja ataca-los?')
-    sleep(5)
+    sleep(2.5)
     print('\n1- Sim. Eu sou uma Super Batata, irei ataca-los agora mesmo!')
     sleep(1.5)
     print('2- Não, acho melhor treinar mais um pouquinho antes.')
@@ -132,11 +133,11 @@ if escolha == '2':
 # Escolhendo inimigo aleatório
 if escolha== '1':
     inimigos = vilao.escolher_vilão()
-    print(f'Os arruaceiros da vez são {inimigos}.\nSó você, Super Batata, pode derrotar os inimigos e acabar com as raízes do mal! ')
+    print(f'Os arruaceiros da vez são {inimigos.capitalize()}.\nSó você, Super Batata, pode derrotar os inimigos e acabar com as raízes do mal! ')
     
     # Batalhando
     if batata.forca < vilao.forca:
-        print(f'{inimigos:.2f}') 
+        print(f'{inimigos.capitalize()}') 
 
 
 

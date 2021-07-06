@@ -22,4 +22,3 @@ def abertura():
     print()
 
 
-abertura()
