@@ -2,6 +2,7 @@ from random import choice
 from time import sleep
 from random import randint
 from abertura import abertura
+from gameover import gameover
 
 
 class Personagem:
@@ -45,13 +46,17 @@ class Vilao(Personagem):
     def escolher_vilão(self):
         lista_viloes= ['cenouras','beterrabas','alfaces','tomates','abobrinhas','pepinos','cebolinhas','mandiocas','rabanetes','brócolis']
         lista_jaForam = list()
-        escolha_vilao = choice(lista_viloes) #Escolhe um vilão da lista_viloes
+        
+        if lista_jaForam == lista_viloes: # VENCEU O JOGO
+            print("Parabéns!!!\nVocê derrotou todos os vilões e livrou a Bluefarm dos vegetais Tóxicos de uma vez por todas!!!")
+            exit()
+            
+        escolha_vilao = choice(lista_viloes) #Escolhe um vilão da lista_viloes    
 
         while escolha_vilao in lista_jaForam:
             escolha_vilao = choice(lista_viloes) # Se o vilão escolhido já estiver na lista_jaForam escolhe novamente.
-        if escolha_vilao == lista_jaForam:
-            print("Parabéns!!!\nVocê derrotou todos os vilões e livrou a Bluefarm dos vegetais Tóxicos de uma vez por todas!!!")
-            exit()
+
+        
 
 
         lista_jaForam.append(escolha_vilao) # adiciona o vilão escolhido na lista dos vilões que já foram
@@ -70,7 +75,6 @@ clima= choice(lista_clima)
 
 batata= Heroi(clima)
 vilao= Vilao(clima)
-
 
 
 print()
@@ -171,7 +175,7 @@ while True:
                 print(f'\n\n{inimigos.capitalize()}: {vilao.forca} pts de força')
 
                 print(f'\n\nSanta Batatuda...Você derrotou os inimigos!!!\n Mas, calma! A Bluefarm ainda não está livre da gange dos agroTóxicos.')
-    if escolha == 1:
+    if escolha == '1':
         batata.treinar()
 
 
