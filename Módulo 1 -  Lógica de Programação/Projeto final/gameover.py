@@ -4,6 +4,9 @@ l = [' ::::::::      :::     ::::    ::::  ::::::::::       ::::::::  :::     ::
 
 def gameover():
     global l
+    print()
     for i in l: 
         sleep(0.3) 
-        print(i, end='', flush=True)        
+        print(i, end='', flush=True)
+    print()
+    print()

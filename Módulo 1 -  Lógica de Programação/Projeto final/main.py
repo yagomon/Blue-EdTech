@@ -1,10 +1,8 @@
-  
 from random import choice
 from time import sleep
 from random import randint
 # from abertura import abertura
 from gameover import gameover
-
 
 class Personagem:
     def __init__(self,clima):
@@ -18,9 +16,6 @@ class Heroi(Personagem):
         super().__init__(clima)
         self.vitalidade= 3 # vida do Herói
         self.clima= clima
-
-    def atacar(self,treino=0):
-        self.força_adicional = treino
 
     def treinar(self):
         dic_treino = {5:'Seus exercícios matutinos foram muito bons e você ganhou +5 de força.',7:
@@ -82,8 +77,7 @@ class Vilao(Personagem):
         ganho_forca= randint(1,5)
         self.forca += ganho_forca
         self.clima= clima
-         
-
+       
     def escolher_vilão(self):
         lista_viloes= ['cenouras','beterrabas','alfaces','tomates','abobrinhas','pepinos','cebolinhas','mandiocas','rabanetes','brócolis'] # lista de vilões
         lista_jaForam = list() # lista de vilões que já foram
@@ -138,7 +132,7 @@ vilao= Vilao(clima)
 while True:
     print()
     print()
-    if clima == 'chovendo': # Começo para dias de chuva
+    if batata.clima == 'chovendo': # Começo para dias de chuva
         sleep(0.3)
         print('▬▬'*10)
         sleep(0.5)
@@ -223,7 +217,7 @@ while True:
             sleep(1)
             print('▬▬'*19)
             sleep(1)
-            print(f'Sua força atual é: [{batata.forca} pts de força]') # print força do heroi
+            print(f'\nSua força atual é: [{batata.forca} pts de força]') # print força do heroi
             sleep(0.5)
             if batata.vitalidade== 3:
                 print(f'Sua vida atual é:  ███') # print vida do herói
