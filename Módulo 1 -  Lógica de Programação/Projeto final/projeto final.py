@@ -9,7 +9,8 @@ class Personagem:
     def __init__(self,clima):
         forca=10   #força padrão de qualquer personagem
         self.forca= forca
-        self.clima=''
+        self.clima= clima
+        self.nome= ''
        
 class Heroi(Personagem):
     def __init__(self,clima):
@@ -24,11 +25,12 @@ class Heroi(Personagem):
         dic_treino = {5:'Seus exercícios matutinos foram muito bons e você ganhou +5 de força.',7:
         'Enquanto praticava seus exercícios a terra foi adubada e você ficou muito forte!\nSua força aumentou em +7 pontos.',3:'O de hoje ta pago...hahahahaha!\nVocê ganhou + 3 de força.',2:'Houve um tempo de seca e suas raízes não tiveram de onde puxar nutrientes.\nVocê ganhou +2 de força', 4:'Você começou a treinar mais cedo e conseguiu dobrar seus exercicios!\nVocê ganha +4 de força.'}
         ganho_forca = choice(list(dic_treino.keys()))
-        
+        self.forca += ganho_forca
+
         if self.clima == 'chovendo':
             influencia_clima = 3
-            self.forca += (ganho_forca + influencia_clima)
-            
+            self.forca += influencia_clima
+
             print()
             sleep(0.5)
             print('-='*30)
@@ -49,6 +51,7 @@ class Heroi(Personagem):
             print()
             print('.'*60)
         else:
+
             print()
             sleep(0.5)
             print('-='*30)
@@ -85,18 +88,18 @@ class Vilao(Personagem):
             exit()
             
         escolha_vilao = choice(lista_viloes) #Escolhe um vilão da lista_viloes    
-
         while escolha_vilao in lista_jaForam:
             escolha_vilao = choice(lista_viloes) # Se o vilão escolhido já estiver na lista_jaForam escolhe novamente.
 
+        self.nome= escolha_vilao
         
 
 
         lista_jaForam.append(escolha_vilao) # adiciona o vilão escolhido na lista dos vilões que já foram
                 
         if self.clima == 'ensolarado': #influencia do clima na força do vilão escolhido
-            self.força += 3
-            print(f'\nHouve uma temporada de seca na horta dos arruaceiros, {escolha_vilao} desviaram a irrigação para si ganharam +3 de força.')     
+            self.forca += 3
+              
         return escolha_vilao        
  
 # Abertura do jogo
@@ -108,8 +111,6 @@ clima= choice(lista_clima)
 
 batata= Heroi(clima)
 vilao= Vilao(clima)
-
-
 
 while True:
     print()
@@ -182,7 +183,9 @@ while True:
             sleep(0.5)
             print(f'\nOs arruaceiros da vez são {inimigos.capitalize()}!!!')
             sleep(1)
+            print(f'\nHouve uma temporada de seca na horta dos arruaceiros, {vilao.nome} desviaram a irrigação para si ganharam +3 de força.') 
             print(f'{inimigos.capitalize()} têm {vilao.forca} pts de força.')
+              
             escolha= input('\nDeseja enfrentar?\n\n1- Bora cair pra dentro\n2- Cê é louco cachoeira?!\nR: ')
             # Batalha
             if escolha =='1':
@@ -210,7 +213,7 @@ while True:
                         exit()
 
                 elif batata.forca >= vilao.forca:
-                    print(f'Força atual: [10]pts')
+                    print(f'Força atual: {batata.forca} pts')
                     if batata.vitalidade== 3:
                         print(f'Vida atual:███')
                     elif batata.vitalidade== 2:
@@ -222,10 +225,15 @@ while True:
 
                     print(f'\n\nSanta Batatuda...Você derrotou os inimigos!!!\n Mas, calma! A Bluefarm ainda não está livre da gange dos agroTóxicos.')
             elif escolha == '2':
-                print(f'Que decepção para os Orgânicos assistir a Super Batata fugir de {inimigos.capitalize()}...\nAcho melhor você deixar de ser orgulhoso e ir treinar um pouco' )        
+                print('-='*30)
+                print(f'\nQue decepção para os Orgânicos assistir a Super Batata fugir de {inimigos.capitalize()}...\nAcho melhor você deixar de ser orgulhoso e ir treinar um pouco')
+                print('-='*30)
+                print('No dia seguinte') 
+
     elif escolha == '1':
         batata.treinar()
 
-
-
-        
+    # mudar o clima
+    clima= choice(lista_clima)
+    batata.clima=clima
+    vilao.clima=clima    
