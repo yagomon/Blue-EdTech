@@ -1,8 +1,10 @@
+  
 from random import choice
 from time import sleep
 from random import randint
-# from abertura import abertura
+from abertura import abertura
 from gameover import gameover
+#from batatamusic import musica
 
 class Personagem:
     def __init__(self,clima):
@@ -29,21 +31,27 @@ class Heroi(Personagem):
 
             print()
             sleep(0.5)
-            print('🌨 '*45)
+            print('🌨🌨 '*25)
             sleep(1)
             print(dic_treino[ganho_forca])
-            sleep(4)
-            print('\nA chuva irrigou o solo da Bluefarm.\nVocê ganhou +3 de bônus!')
-            sleep(1.5)
-            print(f'\nSua força total agora é: {self.forca} pts')
+            sleep(3)
+            print('\nA chuva irrigou o solo da Bluefarm.\nVocê ganhou +3 de bônus!\n')
             sleep(1)
-            print('🌨 '*45)
+            print('▬▬'*16)
+            sleep(0.5)
+            print(f'Sua força total agora é: {self.forca} pts')
+            sleep(1)
+            print('▬▬'*16)
+            sleep(0.5)
+            print('🌨🌨 '*25)
             sleep(2)
             print('\nVá para casa descansar, pois amanhã será um longo dia...........')
-            for i in range(60):
-                print('.',end='', flush=True )
+            for i in range(35):
+                print('Z',end='', flush=True )
                 sleep(0.05)
-            print('.'*60)
+                print('z',end='', flush=True )
+                sleep(0.05)
+            print()
         else:
             print()
             sleep(0.5)
@@ -56,12 +64,12 @@ class Heroi(Personagem):
             print('-='*60)
             sleep(1)
             print('\nVá para casa descansar, pois amanhã será um longo dia...........')
-            for i in range (60):
-                print('.',end='', flush=True )
+            for i in range(35):
+                print('Z',end='', flush=True )
                 sleep(0.05)
-            sleep(3)
+                print('z',end='', flush=True )
+                sleep(0.05)
             print()
-            print('.'*60)
             
     def gameover(self):
         self.vitalidade -= 1 # Herói Perde 1 de vitalidade 
@@ -120,7 +128,8 @@ class Vilao(Personagem):
         
                 
 # Abertura do jogo
-#abertura()
+#musica()
+abertura()
 
 # Começo do jogo
 lista_clima = ['chovendo','ensolarado']
@@ -276,14 +285,22 @@ while True:
                     print('▬▬'*60)
 
             elif escolha == '2':
+                print()
                 sleep(0.5)
-                print('▬▬'*60)
+                print('▬▬'*50)
                 sleep(0.5)
-                print(f'\nQue decepção para os Orgânicos assistir a Super Batata fugir de {vilao.nome.capitalize()}...')
+                print(f'Que decepção para os Orgânicos assistir a Super Batata fugir de {vilao.nome.capitalize()}...')
                 sleep(1)
-                print('\nAcho melhor você deixar de ser orgulhoso e ir treinar um pouco')
+                print('Vá para casa, deixe de ser orgulhoso e treine um pouco amanhã')
                 sleep(0.5)
-                print('▬▬'*60)
+                print('▬▬'*50)
+                print()
+                for i in range(35):
+                    print('Z',end='', flush=True )
+                    sleep(0.05)
+                    print('z',end='', flush=True )
+                    sleep(0.05)
+                print()
 
     elif escolha == '1':
         batata.treinar()
